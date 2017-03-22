@@ -17,7 +17,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
     <!-- Custom styles for this template -->
-    <link href="{!! asset('/css/blog.css') !!}" rel="stylesheet">
+    <link href="{!! asset('/css/app.css') !!}" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
