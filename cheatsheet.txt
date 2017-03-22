@@ -1,0 +1,25 @@
+@include('layouts.sidebar')  //include and layout always based upon public path not on relative path
+@extends('layouts.master')
+//for fixing indentation in phpstrom
+ctrl alt I
+//
+route('name')
+//in route/web.php
+Route::get('/', function)->name('routeName')
+//to store
+$post = new Post();
+$post->title = request('title');
+$post->body = request('body');
+$post->save()
+or
+$this->validate(request(),
+    'title' => 'required|min:3'
+)
+Post::create([
+    'title' => request('title'),
+    'body' => request('body')
+])
+
+//error in blade
+$errors->all()
+
