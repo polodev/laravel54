@@ -23,3 +23,8 @@ Post::create([
 //error in blade
 $errors->all()
 
+//route model binding
+Route::get('posts/{post}', 'PostsController@show');
+public function show(Post $post) { //$post exactly like wild card
+    return view('posts.show', compact('post'));
+}
