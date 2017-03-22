@@ -28,3 +28,7 @@ Route::get('posts/{post}', 'PostsController@show');
 public function show(Post $post) { //$post exactly like wild card
     return view('posts.show', compact('post'));
 }
+
+//to create something inside model through relationship
+$this->comments()->create(compact('body'));
+$this->comments()->create(['body' => $body]);
