@@ -102,6 +102,11 @@ view()->composer('layouts.master', function($view) {
     $view->with('archives', \App\Post::archive());
 });
 
+//factory
+===============================
+factory(\App\User::class, 10)->create();
+factory(\App\User::class, 10)->make(); //still don't know the usages
+
 
 
 
