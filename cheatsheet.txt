@@ -1,12 +1,16 @@
 @include('layouts.sidebar')  //include and layout always based upon public path not on relative path
 @extends('layouts.master')
+
 //for fixing indentation in phpstrom
+=====================
 ctrl alt I
-//
+for adding route name
+===============================
 route('name')
-//in route/web.php
 Route::get('/', function)->name('routeName')
-//to store
+
+to create a new record
+=====================================
 $post = new Post();
 $post->title = request('title');
 $post->body = request('body');
@@ -21,30 +25,62 @@ Post::create([
 ])
 
 //error in blade
+==================================
 $errors->all()
 
 //route model binding
+=======================================
 Route::get('posts/{post}', 'PostsController@show');
 public function show(Post $post) { //$post exactly like wild card
     return view('posts.show', compact('post'));
 }
 
-//to create something inside model through relationship
+//to add a new record something inside model through relationship
+=======================================================
 $this->comments()->create(compact('body'));
 $this->comments()->create(['body' => $body]);
 $this->posts->save($post) //here $post is instance of Post Model
     //difference between create and post
      create need array of data. save require instance of Model
 
-//to login the user after registration
-$user = User::create(someDatatoStoreasUser)
+to login the user after registration
+==================================================
+$user = User::create(request(['name', 'email', 'password'));
 auth()->login($user)
-//to login
+to login from login from
+====================
 Auth::attempt([ 'email' => $email, 'password' => $password]))
 Auth::attempt(request(['email', 'password'))
+
 //to get id of authenticate user
+=====================================
 auth()->user()->id
 auth()->id()
+
+a complex raw sql for archive
+=========================================
+//raw
+(SELECT year(created_at) as year,
+monthname (created_at) as month,
+COUNT(*) publications
+FROM posts
+group by year, month)
+$post = App\Post::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')->groupBy('year', 'month')
+    ->get()->toArray();
+
+scopeQuery
+=================================
+//inside model
+public function scopeFilter($query, $filters) {
+    if ($year = $filters['year']) {
+        $query->whereYear('created_at', Carbon::parse($year)->year);
+    }
+}
+//inside controller
+$posts = Post::latest()
+    ->filter(request(['month', 'year']))
+    ->get();
+
 
 
 
