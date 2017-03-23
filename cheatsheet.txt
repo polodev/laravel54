@@ -89,6 +89,20 @@ finally found windows has such setting call
 manage windows credential
 ===============================================
 
+//View composer
+==============================================
+//php static function for archive
+public static function archive() {
+    return static::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')
+            ->groupBy('year', 'month')
+            ->get()
+            ->toArray();
+}
+view()->composer('layouts.master', function($view) {
+    $view->with('archives', \App\Post::archive());
+});
+
+
 
 
 
