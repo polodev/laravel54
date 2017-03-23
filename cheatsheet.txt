@@ -81,6 +81,14 @@ $posts = Post::latest()
     ->filter(request(['month', 'year']))
     ->get();
 
+===============================================
+//manage windows credential:
+it takes huge time to find out
+how to change github credential in windows
+finally found windows has such setting call
+manage windows credential
+===============================================
+
 
 
 
