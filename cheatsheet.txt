@@ -32,3 +32,29 @@ public function show(Post $post) { //$post exactly like wild card
 //to create something inside model through relationship
 $this->comments()->create(compact('body'));
 $this->comments()->create(['body' => $body]);
+$this->posts->save($post) //here $post is instance of Post Model
+    //difference between create and post
+     create need array of data. save require instance of Model
+
+//to login the user after registration
+$user = User::create(someDatatoStoreasUser)
+auth()->login($user)
+//to login
+Auth::attempt([ 'email' => $email, 'password' => $password]))
+Auth::attempt(request(['email', 'password'))
+//to get id of authenticate user
+auth()->user()->id
+auth()->id()
+
+
+
+
+
+
+
+
+
+
+
+
+

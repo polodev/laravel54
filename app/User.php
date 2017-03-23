@@ -27,9 +27,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function comments() {
-        $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
     public function posts() {
-        $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
+    }
+
+    public function publishPost(Post $post) {
+        //when I send Post Model instance as argument
+        $this->posts()->save($post);
     }
 }

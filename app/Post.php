@@ -11,7 +11,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
     public function user() {
-        $this->belongsTo(User::Class);
+        return $this->belongsTo(User::Class);
     }
     public function createComment($body) {
 //        Comment::create([
@@ -19,6 +19,9 @@ class Post extends Model
 //            'post_id' => $this->id
 //        ]);
 //        $this->comments()->create(compact('body'));
-        $this->comments()->create(['body' => $body]);
+        $this->comments()->create([
+            'body' => $body,
+            'user_id' => auth()->id()
+        ]);
     }
 }

@@ -2,13 +2,16 @@
 @section('content')
     <div class="blog-post">
         <h2 class="blog-post-title"> {{ $post->title }} </h2>
-        <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }}</p>
+        <p class="blog-post-meta">
+            {{ $post->created_at->toFormattedDateString() }} by {{ $post->user->name }}
+        </p>
         <p>{{ $post->body }}</p>
         <hr>
         <ul class="list-item">
             @foreach($post->comments as $comment)
                 <li class="list-group-item">
-                    {{ $comment->created_at->diffForHumans() }}
+                    {{ $comment->created_at->diffForHumans() }} <br>
+                    {{ $comment->user->name }} :
                     {{ $comment->body }}
                 </li>
             @endforeach
