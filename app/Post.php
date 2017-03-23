@@ -10,6 +10,9 @@ class Post extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+    public function user() {
+        $this->belongsTo(User::Class);
+    }
     public function createComment($body) {
 //        Comment::create([
 //            'body' => $body,
