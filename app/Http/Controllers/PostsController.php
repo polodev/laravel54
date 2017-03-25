@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Repository\Posts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,9 @@ class PostsController extends Controller
     public function __construct() {
         $this->middleware('auth', ['only' => 'create']);
     }
-    public function index() {
+    public function index(Posts $post) {
+//        dd($post);
+//        $posts = $post->all();
         $posts = Post::latest()
             ->filter(request(['month', 'year']))
             ->get();
