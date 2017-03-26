@@ -107,6 +107,28 @@ view()->composer('layouts.master', function($view) {
 factory(\App\User::class, 10)->create();
 factory(\App\User::class, 10)->make(); //still don't know the usages
 
+//app service provider
+==================================================
+//for binding
+\App::bind() || \App::singleton('') || $this->app->bind()
+    //example
+$this->app->singleton('redis', function ($app) {
+    $config = $app->make('config')->get('database.redis');
+
+    return new RedisManager(Arr::pull($config, 'client', 'predis'), $config);
+});
+
+//for resolving
+resolve('redis') || app('redis') || \App::make('redis');
+
+php artisan make:provider SocialMediaProvider
+
+update String ClassPath
+==============================================
+'\App\Billing\Stripe' || Stripe::class
+
+
+
 
 
 
