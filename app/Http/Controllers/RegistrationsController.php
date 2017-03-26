@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Welcome;
+use App\Mail\WelcomeAgain;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -29,7 +30,7 @@ class RegistrationsController extends Controller
             'password' => bcrypt(request('password'))
         ]);
         //send mail to the user
-        \Mail::to($user)->send(new Welcome($user));
+        \Mail::to($user)->send(new WelcomeAgain($user));
 
         //login to the account
         auth()->login($user);
