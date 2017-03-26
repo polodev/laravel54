@@ -17,7 +17,7 @@ class PostsController extends Controller
 //        $posts = $post->all();
         $posts = Post::latest()
             ->filter(request(['month', 'year']))
-            ->get();
+          ->get();
         return view('posts.index', compact('posts'));
     }
     public function show(Post $post) {

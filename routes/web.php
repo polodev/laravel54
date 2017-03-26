@@ -1,4 +1,15 @@
 <?php
+//App::bind('App\Billing\Stripe', function () {
+//    return new \App\Billing\Stripe(config('services.stripe.key'));
+//});
+//App::singleton('App\Billing\Stripe', function () {
+//    return new \App\Billing\Stripe(config('services.stripe.key'));
+//});
+//
+//$stripe = App::make('App\Billing\Stripe');
+//$stripe = resolve('App\Billing\Stripe');
+//$stripe = app('App\Billing\Stripe');
+//dd($stripe);
 
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/home', 'PostsController@index')->name('home');
