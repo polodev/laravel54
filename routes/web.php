@@ -5,8 +5,8 @@
 //
 //$stripe = App::make('App\Billing\Stripe');
 //$stripe = resolve('App\Billing\Stripe');
-$stripe = app('App\Billing\Stripe');
-dd($stripe);
+//$stripe = app('App\Billing\Stripe');
+//dd($stripe);
 
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/home', 'PostsController@index')->name('home');

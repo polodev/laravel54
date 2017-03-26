@@ -127,6 +127,14 @@ update String ClassPath
 ==============================================
 '\App\Billing\Stripe' || Stripe::class
 
+mail
+=======================================
+sending mail
+\Mail::to($user)->send(new Welcome($user))
+//making a mailClass Welcome
+php artisan make:mail Welcome
+(inside welcome public $user will be automatic injected inside blade file.)
+
 
 
 
