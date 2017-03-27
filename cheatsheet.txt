@@ -149,6 +149,38 @@ request([]) || request()->only([]) || inside formrequest $this->only([])
 normally we should use dedicated formRequest when we have bigger and complex form to make controller look clean
 when we type hint RequestClass in store method it will first check validation rules then proceed to the next;
 
+pivot table, egar loading, attach(), detach()
+==========================================================
+//schema
+Schema::create('tags', function (Blueprint $table) {
+    $table->increments('id');
+    $table->string('name')->unique();
+    $table->timestamps();
+});
+//pivot table
+    Schema::create('post_tag', function (Blueprint $table) {
+        $table->integer('post_id');
+        $table->integer('tag_id');
+        $table->primary(['post_id', 'tag_id']); //so row won't duplicate
+    });
+//relationship inside post model
+    public function posts() {
+        return $this->belongsToMany(Post::class);
+    }
+//relationship inside tag model
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
+//inside tinker
+$post->tags
+$tags->post
+//egar loading
+$post->with('tags')->get()
+//attach detach
+$post->tags()->attach($tag_id || $tag_model)
+$tag->posts()->attach($post_id || $$post_model)
+
+
 
 
 

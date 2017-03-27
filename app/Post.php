@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $guarded = [];
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }
     public function user() {
         return $this->belongsTo(User::Class);
     }
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
+    
     public function createComment($body) {
 //        Comment::create([
 //            'body' => $body,
