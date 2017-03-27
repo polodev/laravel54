@@ -19,6 +19,7 @@ class RegistrationsController extends Controller
     }
     public function store(RegistrationForm $form) {
          $form->persist();
+         session()->flash('message', 'Thanks for signing up');
         return redirect('/');
     }
 }

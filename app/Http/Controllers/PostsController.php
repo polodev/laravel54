@@ -6,6 +6,7 @@ use App\Post;
 use App\Repository\Posts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostsController extends Controller
 {

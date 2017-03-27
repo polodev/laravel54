@@ -30,6 +30,11 @@
 
 <body>
 @include('layouts.nav')
+@if($flash = session('message'))
+    <div class="alert alert-success" id="registration-alert">
+        <h2>{{ $flash }}</h2>
+    </div>
+@endif
 <div class="container">
     <div class="blog-header">
         <h1 class="blog-title">The Bootstrap Blog</h1>
@@ -45,5 +50,10 @@
     </div>
 </div>
 @include('layouts.footer')
+<script>
+    setTimeout(function () {
+        $('#registration-alert').hide()
+    }, 5000)
+</script>
 </body>
 </html>
