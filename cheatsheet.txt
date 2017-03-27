@@ -143,6 +143,12 @@ php artisan vendor:publish --tag=laravel-mail
 add a new css file name
 change theme name as css file name inside config/mail > markdown > theme
 
+formRequest
+========================================
+request([]) || request()->only([]) || inside formrequest $this->only([])
+normally we should use dedicated formRequest when we have bigger and complex form to make controller look clean
+when we type hint RequestClass in store method it will first check validation rules then proceed to the next;
+
 
 
 
