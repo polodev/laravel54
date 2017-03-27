@@ -190,6 +190,21 @@ public function getRouteKeyname () {
 //appServiceProvider
 $view->with('tags', \App\Tag::has('posts')->pluck('name'));
 
+Event broadcasting and event listener
+===============================================
+php artisan make:event eventName
+php artisan make:listener listenerName --event=eventName
+//for generating event based on EventService provider
+    protected $listen = [
+        'App\Events\ForumThread' => [
+            'App\Listeners\NotifySubscriber',
+            'App\Listeners\CheckSpam',
+        ],
+    ];
+php artisan generate:event
+//tinkering
+event(new App\Events\ForumThread(['name' => 'hello world']))
+
 
 
 
