@@ -135,6 +135,14 @@ sending mail
 php artisan make:mail Welcome
 (inside welcome public $user will be automatic injected inside blade file.)
 
+mailwithmarkdown
+=========================================
+php aritsan make:mail WelcomeAgain --markdown="emails.welcome-again"
+//to add or edit theme style
+php artisan vendor:publish --tag=laravel-mail
+add a new css file name
+change theme name as css file name inside config/mail > markdown > theme
+
 
 
 
