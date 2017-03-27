@@ -180,6 +180,15 @@ $post->with('tags')->get()
 $post->tags()->attach($tag_id || $tag_model)
 $tag->posts()->attach($post_id || $$post_model)
 
+getRouteKeyName, has('method_name')
+===============================================
+//making explicit routeKeyName instead of id
+//inside model
+public function getRouteKeyname () {
+    return 'name';
+}
+//appServiceProvider
+$view->with('tags', \App\Tag::has('posts')->pluck('name'));
 
 
 

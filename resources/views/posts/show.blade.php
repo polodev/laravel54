@@ -2,6 +2,13 @@
 @section('content')
     <div class="blog-post">
         <h2 class="blog-post-title"> {{ $post->title }} </h2>
+        @if(count($post->tags))
+            <ul>
+                @foreach($post->tags as $tag)
+                    <li>{{ $tag->name }}</li>
+                @endforeach
+            </ul>
+        @endif
         <p class="blog-post-meta">
             {{ $post->created_at->toFormattedDateString() }} by {{ $post->user->name }}
         </p>

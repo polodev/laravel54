@@ -9,6 +9,7 @@
 //dd($stripe);
 
 Route::get('/', 'PostsController@index')->name('home');
+Route::get('/posts/tags/{tag}', 'TagsController@index')->name('tag');
 Route::get('/home', 'PostsController@index')->name('home');
 Route::get('posts/create', 'PostsController@create');
 Route::post('posts', 'PostsController@store')->name('postStore');
